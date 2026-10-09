@@ -1,0 +1,19 @@
+FUNPAY LISTER by nezzx — Render deploy
+
+Один сервис. Файлы: bot.py, funpay_auth.py, requirements.txt, render.yaml, .env.example, README.md.
+
+Build command:
+pip install -r requirements.txt && playwright install --with-deps chromium
+
+Start command:
+python bot.py
+
+Health check path:
+/healthz
+
+Environment variables:
+TELEGRAM_BOT_TOKEN = токен от @BotFather
+SESSION_ENCRYPTION_KEY = Fernet key (создать: python -c "from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())")
+DATABASE_PATH = data/funpay_lister.sqlite3
+
+После деплоя открой Telegram-бота и отправь /start, затем /connect. Учётные данные вводятся только в одноразовой HTTPS-форме. Пароль не записывается; сессия шифруется. CAPTCHA/2FA может остановить вход. Автопубликация не включена.

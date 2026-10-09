@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: funpay-lister-by-nezzx
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt && playwright install --with-deps chromium
+    startCommand: python bot.py
+    healthCheckPath: /healthz
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: SESSION_ENCRYPTION_KEY
+        sync: false
+      - key: DATABASE_PATH
+        value: data/funpay_lister.sqlite3
